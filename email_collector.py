@@ -4,7 +4,7 @@ from collections import deque
 import urllib.parse
 import  re    
 from bs4 import BeautifulSoup
-import lxml
+
 
 original_url = input('[+] URL: ')
 unscraped_urls = deque ([original_url])
@@ -38,7 +38,7 @@ try:
         new_emails = set (re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", response.text, re.I))  
         emails.update(new_emails)  
 
-        Soup = BeautifulSoup(response.text, 'features="lxml"')
+        Soup = BeautifulSoup(response.text, features="lxml")
         
         for anchor in Soup.find_all("a"):
             if "href" in anchor.attrs:
